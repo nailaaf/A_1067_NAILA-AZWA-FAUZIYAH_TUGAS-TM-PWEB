@@ -4,105 +4,138 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cakeys's site</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
         <img src="opsi logo 2.png" style="height: 200px; width: auto;" alt="Cakeys's Logo" >
-    <h1>CAKEYS ~ Create Your Own Cake 🎂</h1>
-    <p>Sistem Pemesanan Kue Custom Berbasis Web</p>
+        <div class="header-text">
+            <h1>CAKEYS ~ Create Your Own Cake 🎂</h1>
+            <p>Sistem Pemesanan Kue Custom Berbasis Web</p>
+        </div>
     </header>
 
     <nav>
-        <li> <a href="index.html">Beranda</a></li>
-        <li> <a href="katalog.html">Katalog</a></li>
-        <li> <a href="pesanan.html">Pesanan</a></li>
-        <li> <a href="laporan.html">Laporan</a></li>
+        <ul>
+            <li> <a href="index.html">Beranda</a></li>
+            <li> <a href="katalog.html">Katalog</a></li>
+            <li> <a href="pesanan.html">Pesanan</a></li>
+            <li> <a href="laporan.html">Laporan</a></li>
+        </ul>
     </nav>
 
     <hr>
 
-    <main>
-        <section>
-            <h2>Welcome Owner ^^</h2>
-            <p>Hari ini mau ngapain aja nih? Sudah siapkah memulai hari?</p>
-        </section>
+    <div class="layout">
+        <main>
+            <section class="hero">
+                <h2>Welcome Owner ^^</h2>
+                <p>Hari ini mau ngapain aja nih? Sudah siapkah memulai hari?</p>
+            </section>
 
-        <section>
-            <h2>Ringkasan Pesanan</h2>
-            
-            <article>
-                <h3>Pesanan Hari Ini</h3>
-                <p>12 pesanan masuk</p>
-            </article>
+            <section>
+                <h2>Cari Pesanan</h2>
+                <input type="text" placeholder="Cari...">
+                <button>Cari</button>
+            </section>
 
-            <article>
-                <h3>Pesanan Diproses</h3>
-                <p>5 pesanan sedang dibuat</p>
-            </article>
+            <section>
+                <h2>Ringkasan Pesanan</h2>
+                
+                <div class="card-container">
+                    <article class="card">
+                        <h3>Pesanan Hari Ini</h3>
+                        <p>12 pesanan masuk</p>
+                    </article>
 
-            <article>
-                <h3>Pesanan Selesai</h3>
-                <p>7 pesanan telah selesai</p>
-            </article>
-        </section>
+                    <article class="card">
+                        <h3>Pesanan Diproses</h3>
+                        <p>5 pesanan sedang dibuat</p>
+                    </article>
 
-        <section>
-            <h2>Informasi Produk</h2>
+                    <article class="card">
+                        <h3>Pesanan Selesai</h3>
+                        <p>7 pesanan telah selesai</p>
+                    </article>
+                </div>
 
-            <article>
-                <h3>Produk Terlaris</h3>
-                <p>Chocolate Birthday Cake</p>
-            </article>
+                <table>
+                    <tr>
+                        <th>Nama</th>
+                        <th>Status</th>
+                    </tr>
+                    <tr>
+                        <td>Order 1</td>
+                        <td>Selesai</td>
+                    </tr>
+                </table>
+            </section>
 
-            <article>
-                <h3>Total Jenis Kue</h3>
-                <p>15 produk tersedia di katalog</p>
-            </article>
-        </section>
-    </main>
+            <section>
+                <h2>Informasi Produk</h2>
 
-    <hr>
+                <article class="card">
+                    <h3>Produk Terlaris</h3>
+                    <p>Chocolate Birthday Cake</p>
+                </article>
 
-    <aside>
-        <section>
-            <h2>Statistik Hari Ini</h2>
+                <article class="card">
+                    <h3>Total Jenis Kue</h3>
+                    <p>15 produk tersedia di katalog</p>
+                </article>
+            </section>
+        </main>
 
-            <article>
-                <h3>Total Pesanan</h3>
-                <p>12 pesanan</p>
-            </article>
+        <aside>
+            <section>
+                <h2>Statistik Hari Ini</h2>
+                
+                <h3>Filter</h3>
+                <label><input type="checkbox"> Cake</label>
+                <label><input type="checkbox"> Cupcake</label>
+                
+                <article class="card">
+                    <h3>Total Pesanan</h3>
+                    <p>12 pesanan</p>
+                </article>
 
-            <article>
-                <h3>Total Penjualan</h3>
-                <p>Rp 2.500.000</p>
-            </article>
+                <article class="card">
+                    <h3>Total Penjualan</h3>
+                    <p>Rp 2.500.000</p>
+                </article>
 
-            <article>
-                <h3>Produk Terlaris</h3>
-                <p>Chocolate Cake</p>
-            </article>
+                <article class="card">
+                    <h3>Produk Terlaris</h3>
+                    <p>Chocolate Cake</p>
+                </article>
 
-            <article>
-                <h3>Total Produk</h3>
-                <p>15 jenis kue</p>
-            </article>
-        </section>
-    </aside>
+                <article class="card">
+                    <h3>Total Produk</h3>
+                    <p>15 jenis kue</p>
+                </article>
+            </section>
+        </aside>
+    </div>
 
     <hr>
 
     <footer>
-        <p>CAKEYS ~ Create Your Own Cake</p>
-        <p>Sistem Pemesanan Kue Custom Berbasis Web</p>
-        
-        <section>
-            <h3>Contact Us</h3>
-            <p>Email: cakeys@gmail.com</p>
-            <p>Instagram: @cakeys.cake</p>
-            <p>WhatsApp: 0812-xxxx-xxxx</p>
-        </section>
+        <div>
+            <h3>CAKEYS</h3>
+            <p>Create Your Own Cake</p>
+        </div>
 
-        <p>© 2026 CAKEYS Bakery</p>
+        <div>
+            <h3>Menu</h3>
+            <p>Beranda</p>
+            <p>Katalog</p>
+        </div>
+
+        <div>
+            <h3>Contact</h3>
+            <p>Email: cakeys@gmail.com</p>
+        </div>
     </footer>
     
 </body>
