@@ -9,7 +9,7 @@
 </head>
 <body>
     <header>
-        <img src="opsi logo 2.png" style="height: 200px; width: auto;" alt="Cakeys's Logo" >
+        <img src="opsi logo 2.png" alt="Cakeys's Logo" >
         <div class="header-text">
             <h1>CAKEYS ~ Create Your Own Cake 🎂</h1>
             <p>Sistem Pemesanan Kue Custom Berbasis Web</p>
@@ -17,12 +17,15 @@
     </header>
 
     <nav>
-        <ul>
-            <li> <a href="index.html">Beranda</a></li>
-            <li> <a href="katalog.html">Katalog</a></li>
-            <li> <a href="pesanan.html">Pesanan</a></li>
-            <li> <a href="laporan.html">Laporan</a></li>
-        </ul>
+        <div class="nav-container"> 
+            <div class="nav-cakeys">CAKEYS</div>
+            <ul>
+                <li> <a href="index.html">Beranda</a></li>
+                <li> <a href="katalog.html">Katalog</a></li>
+                <li> <a href="pesanan.html">Pesanan</a></li>
+                <li> <a href="laporan.html">Laporan</a></li>
+            </ul>
+        </div>
     </nav>
 
     <hr>
@@ -34,9 +37,9 @@
                 <p>Hari ini mau ngapain aja nih? Sudah siapkah memulai hari?</p>
             </section>
 
-            <section>
+            <section class="form-search">
                 <h2>Cari Pesanan</h2>
-                <input type="text" placeholder="Cari...">
+                <input type="text" placeholder="Cari Pesanan...">
                 <button>Cari</button>
             </section>
 
@@ -58,15 +61,47 @@
                         <h3>Pesanan Selesai</h3>
                         <p>7 pesanan telah selesai</p>
                     </article>
+
+                    <article class="card">
+                        <h3>Total Pesanan</h3>
+                        <p>27 Pesanan</p>
+                    </article>
                 </div>
 
                 <table>
                     <tr>
                         <th>Nama</th>
+                        <th>Pesanan</th>
                         <th>Status</th>
                     </tr>
                     <tr>
-                        <td>Order 1</td>
+                        <td>Sabil</td>
+                        <td>Black Forest</td>
+                        <td>Selesai</td>
+                    </tr>
+                    <tr>
+                        <td>Esther</td>
+                        <td>Tiramisu Wedding Cake Susun</td>
+                        <td>Proses</td>
+                    </tr>
+                    <tr>
+                        <td>Ling ling</td>
+                        <td>Red Velvet</td>
+                        <td>Selesai</td>
+                    </tr>
+                    <tr>
+                        <td>Naila</td>
+                        <td>Chocolate cake</td>
+                        <td>Selesai</td>
+                    </tr>
+                    <tr>
+                        <td>Nichol</td>
+                        <td>Tiramisu</td>
+                        <td>Selesai</td>
+                    </tr>
+                    <tr>
+                        <td>Nabila</td>
+                        <td>Tiramisu</td>
                         <td>Selesai</td>
                     </tr>
                 </table>
@@ -75,15 +110,17 @@
             <section>
                 <h2>Informasi Produk</h2>
 
-                <article class="card">
-                    <h3>Produk Terlaris</h3>
-                    <p>Chocolate Birthday Cake</p>
-                </article>
-
-                <article class="card">
-                    <h3>Total Jenis Kue</h3>
-                    <p>15 produk tersedia di katalog</p>
-                </article>
+                <div class="card-container">
+                    <article class="card">
+                        <h3>Produk Terlaris</h3>
+                        <p>Tiramisu</p>
+                    </article>
+    
+                    <article class="card">
+                        <h3>Total Jenis Kue</h3>
+                        <p>15 produk tersedia di katalog</p>
+                    </article>
+                </div>
             </section>
         </main>
 
