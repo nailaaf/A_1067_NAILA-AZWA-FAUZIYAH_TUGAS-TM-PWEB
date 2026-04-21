@@ -8,35 +8,82 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <img src="opsi logo 2.png" alt="Cakeys's Logo" >
-        <div class="header-text">
-            <h1>CAKEYS ~ Create Your Own Cake 🎂</h1>
-            <p>Sistem Pemesanan Kue Custom Berbasis Web</p>
+    <nav class="navbar">
+        <div class="nav-left">
+            <img src="images/opsi logo 2.png" alt="logo" class="logo">
+            <div class="nav-text">
+                <h1>CAKEYS</h1>
+                <p>Create Your Own Cake</p>
+            </div>
         </div>
-    </header>
 
-    <nav>
-        <div class="nav-container"> 
-            <div class="nav-cakeys">CAKEYS</div>
-            <ul>
-                <li> <a href="index.html">Beranda</a></li>
-                <li> <a href="katalog.html">Katalog</a></li>
-                <li> <a href="pesanan.html">Pesanan</a></li>
-                <li> <a href="laporan.html">Laporan</a></li>
-            </ul>
+        <ul class="nav-menu">
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="katalog.html">Katalog</a></li>
+            <li><a href="pesanan.html">Pesanan</a></li>
+            <li><a href="laporan.html">Laporan</a></li>
+        </ul>
+
+        <div class="nav-icon">
+            <span class="icon search-btn bitcoin-icons--search-outline"></span>
+            <form class="search-box">
+                <input type="text" placeholder="Search something...">
+                <button type="submit" style="display:none;"></button>
+            </form>
+            
+
+            <span class="mdi-light--cart"></span>
+            
+            <div class="profile">
+                <span class="icon healthicons--ui-user-profile"></span>
+                <div class="dropdown">
+                    <p>My Account</p>
+                    <p>Setting</p>
+                    <p>Logout</p>
+                </div>
+            </div>
         </div>
     </nav>
 
-    <hr>
+    <section class="hero">
+        <div class="overlay">
+            <h1>CAKEYS</h1>
+            <h1>Create Your Own Cake 🎂</h1>
+            <p>Sistem Pemesanan Kue Custom Berbasis Web</p>
+        </div>
+
+        <div>
+            <img src="images/choco strawberry landscape.png" alt="cakeys cake">
+        </div>
+    </section>
+
+    
+
+    <section id="products" class="products-section">
+        <h2>Our Products</h2>
+        <p class="subtitle">
+            Temukan berbagai pilihan produk terbaik dari CAKEYS
+        </p>
+
+        <div class="product-slider-wrapper">
+            <button class="slide-btn prev">&#10094;</button>
+
+            <div class="product-slider">
+                <div class="product-list"></div>
+            </div>
+
+            <button class="slide-btn next">&#10095;</button>
+        </div>
+
+        <div class="see-all">
+            <a href="katalog.html">See All Products</a>
+        </div>
+    </section>
+
 
     <div class="layout">
         <main>
-            <section class="hero">
-                <h2>Welcome Owner ^^</h2>
-                <p>Hari ini mau ngapain aja nih? Sudah siapkah memulai hari?</p>
-            </section>
-
+            <div id="search-result"></div>
             <section class="form-search">
                 <h2>Cari Pesanan</h2>
                 <input type="text" placeholder="Cari Pesanan...">
@@ -105,6 +152,9 @@
                         <td>Selesai</td>
                     </tr>
                 </table>
+                <div class="see-all">
+                    <a href="pesanan.html">View All Orders</a>
+                </div>
             </section>
 
             <section>
@@ -120,6 +170,9 @@
                         <h3>Total Jenis Kue</h3>
                         <p>15 produk tersedia di katalog</p>
                     </article>
+                </div>
+                <div class="see-all">
+                    <a href="katalog.html">View All Products</a>
                 </div>
             </section>
         </main>
@@ -151,11 +204,13 @@
                     <h3>Total Produk</h3>
                     <p>15 jenis kue</p>
                 </article>
+                <div class="see-all">
+                    <a href="laporan.html">View Reports</a>
+                </div>
             </section>
+
         </aside>
     </div>
-
-    <hr>
 
     <footer>
         <div>
@@ -175,5 +230,6 @@
         </div>
     </footer>
     
+    <script src="main.js"></script>
 </body>
 </html>
