@@ -1,4 +1,3 @@
-// ================= NAVBAR =================
 const navbar = document.querySelector(".navbar");
 
 if (navbar) {
@@ -356,3 +355,17 @@ if (grid) {
 
     render();
 }
+
+const toggle = document.getElementById("menuToggle");
+const menu = document.querySelector(".nav-menu");
+const overlay = document.getElementById("menuOverlay");
+
+toggle.addEventListener("click", () => {
+    menu.classList.toggle("active");
+    overlay.classList.toggle("active");
+});
+
+overlay.addEventListener("click", () => {
+    menu.classList.remove("active");
+    overlay.classList.remove("active");
+});
