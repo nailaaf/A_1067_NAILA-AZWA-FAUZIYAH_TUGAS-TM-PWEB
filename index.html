@@ -86,72 +86,56 @@
             <div id="search-result"></div>
             <section class="form-search">
                 <h2>Cari Pesanan</h2>
-                <input type="text" placeholder="Cari Pesanan...">
-                <button>Cari</button>
+                <div class="search-wrapper">
+                    <form class="custom-search">
+                        <input type="text" placeholder="Cari pesanan...">
+                        <span class="icon bitcoin-icons--search-outline"></span>
+                    </form>
+                </div>
             </section>
 
-            <section>
+            <section class="order-section">
                 <h2>Ringkasan Pesanan</h2>
-                
-                <div class="card-container">
-                    <article class="card">
-                        <h3>Pesanan Hari Ini</h3>
-                        <p>12 pesanan masuk</p>
-                    </article>
 
-                    <article class="card">
-                        <h3>Pesanan Diproses</h3>
-                        <p>5 pesanan sedang dibuat</p>
-                    </article>
-
-                    <article class="card">
-                        <h3>Pesanan Selesai</h3>
-                        <p>7 pesanan telah selesai</p>
-                    </article>
-
-                    <article class="card">
-                        <h3>Total Pesanan</h3>
-                        <p>27 Pesanan</p>
-                    </article>
+                <div class="statistik">
+                    <div>
+                        <h4>Pesanan Hari Ini</h4>
+                        <p>12</p>
+                    </div>
+                    <div>
+                        <h4>Diproses</h4>
+                        <p>5</p>
+                    </div>
+                    <div>
+                        <h4>Selesai</h4>
+                        <p>7</p>
+                    </div>
+                    <div>
+                        <h4>Total</h4>
+                        <p>27</p>
+                    </div>
                 </div>
 
-                <table>
-                    <tr>
-                        <th>Nama</th>
-                        <th>Pesanan</th>
-                        <th>Status</th>
-                    </tr>
-                    <tr>
-                        <td>Sabil</td>
-                        <td>Black Forest</td>
-                        <td>Selesai</td>
-                    </tr>
-                    <tr>
-                        <td>Esther</td>
-                        <td>Tiramisu Wedding Cake Susun</td>
-                        <td>Proses</td>
-                    </tr>
-                    <tr>
-                        <td>Ling ling</td>
-                        <td>Red Velvet</td>
-                        <td>Selesai</td>
-                    </tr>
-                    <tr>
-                        <td>Naila</td>
-                        <td>Chocolate cake</td>
-                        <td>Selesai</td>
-                    </tr>
-                    <tr>
-                        <td>Nichol</td>
-                        <td>Tiramisu</td>
-                        <td>Selesai</td>
-                    </tr>
-                    <tr>
-                        <td>Nabila</td>
-                        <td>Tiramisu</td>
-                        <td>Selesai</td>
-                    </tr>
-                </table>
+                <div class="order-grid">
+                    <div class="order-card">
+                        <h3>Sabil</h3>
+                        <p>Black Forest</p>
+                        <span class="status done">Selesai</span>
+                    </div>
+
+                    <div class="order-card">
+                        <h3>Esther</h3>
+                        <p>Tiramisu Wedding Cake</p>
+                        <span class="status process">Proses</span>
+                    </div>
+
+                    <div class="order-card">
+                        <h3>Naila</h3>
+                        <p>Chocolate Cake</p>
+                        <span class="status done">Selesai</span>
+                    </div>
+                </div>
+
                 <div class="see-all">
                     <a href="pesanan.html">View All Orders</a>
                 </div>
@@ -182,8 +166,15 @@
                 <h2>Statistik Hari Ini</h2>
                 
                 <h3>Filter</h3>
-                <label><input type="checkbox"> Cake</label>
-                <label><input type="checkbox"> Cupcake</label>
+                <div class="filter-dropdown">
+                    <select>
+                        <option>Semua Kategori</option>
+                        <option>Cake</option>
+                        <option>Cupcake</option>
+                        <option>Brownies</option>
+                        <option>Pies</option>
+                    </select>
+                </div>
                 
                 <article class="card">
                     <h3>Total Pesanan</h3>
@@ -212,21 +203,49 @@
         </aside>
     </div>
 
-    <footer>
-        <div>
-            <h3>CAKEYS</h3>
-            <p>Create Your Own Cake</p>
+    <footer class="footer">
+        <div class="footer-container">
+
+            <div class="footer-left">
+                <div class="footer-brand">
+                    <img src="images/opsi logo 2.png" alt="logo">
+                    <div>
+                        <h2>CAKEYS</h2>
+                        <p>Create Your Own Cake</p>
+                    </div>
+                </div>
+
+                <p class="footer-desc">
+                    Toko kue custom terbaik untuk berbagai acara spesialmu 🎂
+                </p>
+            </div>
+
+            <div class="footer-center">
+                <h3>Menu</h3>
+                <ul>
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="katalog.html">Katalog</a></li>
+                    <li><a href="pesanan.html">Pesanan</a></li>
+                    <li><a href="laporan.html">Laporan</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-right">
+                <h3>Contact</h3>
+                <p>📍 Surabaya, Indonesia</p>
+                <p>📞 0812-3456-7890</p>
+                <p>✉️ cakeys@gmail.com</p>
+
+                <div class="social-icons">
+                    <span class="mdi-light--cart"></span>
+                    <span class="healthicons--ui-user-profile"></span>
+                </div>
+            </div>
+
         </div>
 
-        <div>
-            <h3>Menu</h3>
-            <p>Beranda</p>
-            <p>Katalog</p>
-        </div>
-
-        <div>
-            <h3>Contact</h3>
-            <p>Email: cakeys@gmail.com</p>
+        <div class="footer-bottom">
+            <p>© 2026 Cakeys | Naila's Project</p>
         </div>
     </footer>
     

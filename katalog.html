@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katalog Produk</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="katalog-page">
+        <nav class="navbar">
+        <div class="nav-left">
+            <img src="images/opsi logo 2.png" alt="logo" class="logo">
+            <div class="nav-text">
+                <h1>CAKEYS</h1>
+                <p>Create Your Own Cake</p>
+            </div>
+        </div>
+
+        <ul class="nav-menu">
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="katalog.html">Katalog</a></li>
+            <li><a href="pesanan.html">Pesanan</a></li>
+            <li><a href="laporan.html">Laporan</a></li>
+        </ul>
+
+        <div class="nav-icon">
+            <span class="icon search-btn bitcoin-icons--search-outline"></span>
+            <form class="search-box">
+                <input type="text" placeholder="Search something...">
+                <button type="submit" style="display:none;"></button>
+            </form>
+            
+
+            <span class="mdi-light--cart"></span>
+            
+            <div class="profile">
+                <span class="icon healthicons--ui-user-profile"></span>
+                <div class="dropdown">
+                    <p>My Account</p>
+                    <p>Setting</p>
+                    <p>Logout</p>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="katalog-container">
+        <h1>Katalog Produk</h1>
+        <div class="top-bar">
+            <input type="text" id="search" placeholder="Search...">
+
+            <select id="filter">
+                <option value="">All Category</option>
+                <option value="cake">Cake</option>
+                <option value="brownies">Brownies</option>
+                <option value="pies">Pies</option>
+                <option value="cupcake">Cupcake</option>
+            </select>
+        </div>
+
+        <form id="form-produk">
+            <input type="file" id="gambar" accept="image/*">
+            <input type="text" id="kode" placeholder="Kode">
+            <input type="text" id="nama" placeholder="Nama">
+            <select id="kategori">
+                <option value="">Kategori</option>
+                <option value="cake">Cake</option>
+                <option value="brownies">Brownies</option>
+                <option value="pies">Pies</option>
+                <option value="cupcake">Cupcake</option>
+            </select>
+            <input type="number" id="stok" placeholder="Stok">
+            <input type="number" id="harga" placeholder="Harga">
+            <input type="date" id="tanggal">
+            <button type="submit">Tambah</button>
+        </form>
+        <div class="product-grid" id="product-grid"></div>
+
+        <div class="statistik" id="statistik"></div>
+    </section>
+
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h2>Edit Produk</h2>
+                <span id="closeModal" class="bitcoin-icons--cross-filled"></span>
+            </div>
+
+            <input type="text" id="edit-nama" placeholder="Nama">
+            <input type="number" id="edit-harga" placeholder="Harga">
+            <input type="number" id="edit-stok" placeholder="Stok">
+
+            <div class="modal-action">
+                <button id="saveEdit">Simpan</button>
+                <button id="deleteBtn" class="delete-btn">
+                    <span class="ph--trash-light"></span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+    
+</body>
+</html>
