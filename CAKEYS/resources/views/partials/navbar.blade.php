@@ -1,6 +1,7 @@
 <nav class="navbar">
     <div class="nav-kiri">
         <img src="{{ asset('images/opsi-logo-2.png') }}" alt="logo" class="logo">
+
         <div class="nav-teks">
             <h1>CAKEYS</h1>
             <p>Create Your Own Cake</p>
@@ -29,7 +30,7 @@
                 <hr style="margin: 5px 0; border: 0; border-top: 1px solid #ddd;">
                 <p><a href="{{ route('profile') }}" style="color: inherit; text-decoration: none;">Profil Saya</a></p>
                 <p>Pengaturan</p>
-                <p style="color: #E11D48;">Logout</p>
+                <p class="logout-btn" {{--style="color: #E11D48;"--}}>Logout</p>
             </div>
         </div>
     </div>

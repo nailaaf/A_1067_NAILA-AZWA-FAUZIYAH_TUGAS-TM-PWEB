@@ -15,5 +15,6 @@ Route::get('/pesanan', [PesananController::class, 'index'])->name('pesanan');
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 
 Route::view('/tentang', 'tentang')->name('tentang');
+Route::view('/kontak', 'kontak')->name('kontak');
 
 Route::get('/hitung/{a}/{b}', fn($a, $b) => $a + $b);
