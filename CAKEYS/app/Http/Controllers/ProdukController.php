@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Produk;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth; // Tambahan wajib untuk mengecek user yang login
 
 class ProdukController extends Controller
 {
@@ -12,7 +13,7 @@ class ProdukController extends Controller
      */
     public function index()
     {
-        $produks = Produk::paginate(10);
+        $produks = Produk::where('user_id', Auth::id())->paginate(10);
 
         return view('produk.index', compact('produks'));
     }
@@ -46,13 +47,14 @@ class ProdukController extends Controller
             'kategori.in'          => 'Kategori tidak valid.',
             'harga.required'       => 'Harga produk harus diisi.',
             'stok.required'        => 'Stok awal tidak boleh kosong.',
-            // ... (Pesan kustom kamu biarkan sama seperti sebelumnya) ...
-            'gambar.image' => 'File harus berupa gambar.',
-            'gambar.mimes' => 'Format gambar harus jpeg, png, atau jpg.',
-            'gambar.max'   => 'Ukuran gambar maksimal 2MB.',
+            'gambar.image'         => 'File harus berupa gambar.',
+            'gambar.mimes'         => 'Format gambar harus jpeg, png, atau jpg.',
+            'gambar.max'           => 'Ukuran gambar maksimal 2MB.',
         ]);
 
         $validatedData['is_available'] = $request->stok > 0 ? true : false;
+
+        $validatedData['user_id'] = Auth::id();
 
         if ($request->hasFile('gambar')) {
             $image = $request->file('gambar');
@@ -73,7 +75,11 @@ class ProdukController extends Controller
      */
     public function show(Produk $produk)
     {
-        // Menampilkan halaman detail produk
+        // (Opsional Keamanan Tambahan): Cegah user melihat detail produk milik orang lain
+        if ($produk->user_id !== Auth::id()) {
+            abort(403, 'Akses Ditolak');
+        }
+
         return view('produk.show', compact('produk'));
     }
 
@@ -82,6 +88,11 @@ class ProdukController extends Controller
      */
     public function edit(Produk $produk)
     {
+        // (Opsional Keamanan Tambahan): Cegah user mengedit produk milik orang lain
+        if ($produk->user_id !== Auth::id()) {
+            abort(403, 'Akses Ditolak');
+        }
+
         return view('produk.edit', compact('produk'));
     }
 
@@ -90,6 +101,10 @@ class ProdukController extends Controller
      */
     public function update(Request $request, Produk $produk)
     {
+        if ($produk->user_id !== Auth::id()) {
+            abort(403, 'Akses Ditolak');
+        }
+
         $validatedData = $request->validate([
             'kode_produk' => 'required|string|max:50|unique:produks,kode_produk,' . $produk->id,
             'nama_produk' => 'required|string|min:3|max:255',
@@ -106,9 +121,9 @@ class ProdukController extends Controller
             'kategori.in'          => 'Kategori tidak valid.',
             'harga.required'       => 'Harga produk harus diisi.',
             'stok.required'        => 'Stok produk tidak boleh kosong.',
-            'gambar.image' => 'File harus berupa gambar.',
-            'gambar.mimes' => 'Format gambar harus jpeg, png, atau jpg.',
-            'gambar.max'   => 'Ukuran gambar maksimal 2MB.',
+            'gambar.image'         => 'File harus berupa gambar.',
+            'gambar.mimes'         => 'Format gambar harus jpeg, png, atau jpg.',
+            'gambar.max'           => 'Ukuran gambar maksimal 2MB.',
         ]);
 
         $validatedData['is_available'] = $request->stok > 0 ? true : false;
@@ -130,10 +145,12 @@ class ProdukController extends Controller
      */
     public function destroy(Produk $produk)
     {
-        // Langsung hapus data dari database (file foto di public dibiarkan)
+        if ($produk->user_id !== Auth::id()) {
+            abort(403, 'Akses Ditolak');
+        }
+
         $produk->delete();
 
-        // Redirect kembali dengan pesan sukses
         return redirect()->route('produk.index')->with('success', 'Data produk berhasil dihapus!');
     }
 }

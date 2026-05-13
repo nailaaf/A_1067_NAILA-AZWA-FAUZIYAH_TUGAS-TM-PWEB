@@ -14,11 +14,11 @@
         </a>
     </div>
 
-    @if(session('success'))
+    {{-- @if(session('success'))
         <div style="background-color: #d4edda; color: #155724; padding: 15px; margin-top: 20px; border-radius: 8px;">
             {{ session('success') }}
         </div>
-    @endif
+    @endif --}}
 
     <div class="dashboard-section mt-4">
         <div class="table" style="overflow-x: auto;">

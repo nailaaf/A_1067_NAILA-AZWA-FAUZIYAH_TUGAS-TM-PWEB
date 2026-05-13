@@ -20,7 +20,7 @@
                 <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
                 <li><a href="{{ route('katalog') }}">Katalog</a></li>
                 <li><a href="{{ route('pesanan') }}">Pesanan</a></li>
-                <li><a href="{{ route('profile') }}">Profile</a></li>
+                <li><a href="{{ route('profile.edit') }}">Profile</a></li>
             </ul>
         </div>
 

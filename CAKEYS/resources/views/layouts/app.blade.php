@@ -40,7 +40,7 @@
         }, 3000);
     </script>
 
-    <main class="main-content {{--dashboard-wrapper--}}">
+    <main class="main-content">
         @yield('content')
     </main>
 
