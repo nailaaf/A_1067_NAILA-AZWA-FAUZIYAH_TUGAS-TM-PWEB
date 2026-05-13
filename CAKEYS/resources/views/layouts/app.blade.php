@@ -13,20 +13,32 @@
     @include('partials.navbar')
 
     @if(session('success'))
-        <div id="flash-message" style="position: fixed; top: 90px; right: 20px; background-color: #f4e8e1; color: #5A3E36; padding: 15px 25px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); z-index: 9999; font-weight: 600; border-left: 5px solid #5A3E36; transition: opacity 0.5s ease;">
+        <div id="flash-message-success" style="position: fixed; top: 90px; right: 20px; background-color: #f4e8e1; color: #5A3E36; padding: 15px 25px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); z-index: 9999; font-weight: 600; border-left: 5px solid #5A3E36; transition: opacity 0.5s ease;">
             {{ session('success') }}
         </div>
-
-        <script>
-            setTimeout(function() {
-                let flashMessage = document.getElementById('flash-message');
-                if(flashMessage) {
-                    flashMessage.style.opacity = '0';
-                    setTimeout(() => flashMessage.remove(), 500);
-                }
-            }, 3000);
-        </script>
     @endif
+
+    @if(session('error'))
+        <div id="flash-message-error" style="position: fixed; top: 90px; right: 20px; background-color: #fde8e8; color: #9b1c1c; padding: 15px 25px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); z-index: 9999; font-weight: 600; border-left: 5px solid #9b1c1c; transition: opacity 0.5s ease;">
+            {{ session('error') }}
+        </div>
+    @endif
+
+    <script>
+        setTimeout(function() {
+            let flashSuccess = document.getElementById('flash-message-success');
+            if(flashSuccess) {
+                flashSuccess.style.opacity = '0';
+                setTimeout(() => flashSuccess.remove(), 500);
+            }
+
+            let flashError = document.getElementById('flash-message-error');
+            if(flashError) {
+                flashError.style.opacity = '0';
+                setTimeout(() => flashError.remove(), 500);
+            }
+        }, 3000);
+    </script>
 
     <main class="main-content {{--dashboard-wrapper--}}">
         @yield('content')

@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KatalogController;
 use App\Http\Controllers\PesananController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProdukController;
 
 Route::get('/', [DashboardController::class, 'index'])->name('home');
 
@@ -16,5 +17,7 @@ Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 
 Route::view('/tentang', 'tentang')->name('tentang');
 Route::view('/kontak', 'kontak')->name('kontak');
+
+Route::resource('produk', ProdukController::class);
 
 Route::get('/hitung/{a}/{b}', fn($a, $b) => $a + $b);

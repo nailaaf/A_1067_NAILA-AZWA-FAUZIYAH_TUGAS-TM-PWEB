@@ -16,7 +16,7 @@ return new class extends Migration
 
             $table->string('kode_produk')->unique();
             $table->string('nama_produk');
-            $table->enum('kategori', ['cake', 'brownies', 'cupcake']);
+            $table->enum('kategori', ['cake', 'brownies', 'cupcake', 'pies']);
             $table->decimal('harga', 10, 2);
             $table->integer('stok');
             $table->boolean('is_available')->default(true);
