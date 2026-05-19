@@ -734,3 +734,63 @@ ul {
     }
 }
 
+/* --- DARK MODE FIX (GANTI BLOK .dark LAMA DENGAN INI) --- */
+
+.dark {
+    /* Menyesuaikan variabel agar sinkron dengan yang dipakai di HTML */
+    --primary-color: #D4A373;
+    --secondary-color: #B0B0B0;
+    --background-light: #121212; /* Variabel yang dipakai di welcome.blade.php */
+    --surface-color: #1E1E1E;    /* Variabel yang dipakai di welcome.blade.php */
+    --text-color: #E0E0E0;       /* Putih terang */
+    --border-color: #333333;
+}
+
+/* 1. Paksa semua section dan card agar mengikuti variabel gelap */
+.dark section,
+.dark .card,
+.dark .produk-card,
+.dark .dashboard-section,
+.dark #weather-info {
+    background-color: var(--background-light) !important;
+    border: 1px solid var(--border-color) !important;
+    color: var(--text-color) !important;
+}
+
+/* 2. Fix Teks dalam kartu agar kontras (Bukan putih silau, tapi jelas) */
+.dark .card h3,
+.dark .dashboard-welcome h3 {
+    color: var(--primary-color) !important;
+}
+
+.dark .card p,
+.dark .card .teks,
+.dark #weather-info p {
+    color: var(--text-color) !important;
+    opacity: 1 !important;
+}
+
+/* 3. Fix Warna Teks pada halaman lain */
+.dark .kue-nama,
+.dark .kue-harga {
+    color: var(--text-color) !important;
+}
+
+/* 4. Fix Navbar & Footer agar tidak menyatu dengan background */
+.dark .navbar,
+.dark .footer {
+    background-color: #2D1F1B !important;
+}
+
+/* 5. Fix Input agar kontras */
+.dark input,
+.dark select {
+    background-color: #2A2A2A !important;
+    color: var(--text-color) !important;
+    border: 1px solid #444 !important;
+}
+
+/* --- PREFERENSI UKURAN FONT --- */
+html.font-small { font-size: 14px !important; }
+html.font-medium { font-size: 16px !important; } /* 16px adalah ukuran default browser */
+html.font-large { font-size: 20px !important; }

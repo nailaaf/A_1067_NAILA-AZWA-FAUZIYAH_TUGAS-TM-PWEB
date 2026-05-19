@@ -17,6 +17,11 @@ return Application::configure(basePath: dirname(__DIR__))
             'cekowner' => \App\Http\Middleware\CekOwner::class,
         ]);
 
+        $middleware->encryptCookies(except: [
+            'theme',
+            'font_size',
+        ]);
+
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

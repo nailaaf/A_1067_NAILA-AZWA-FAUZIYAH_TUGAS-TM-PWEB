@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.customer')
 
 @section('title', 'Kontak Kami - Cakeys')
 
 @section('content')
-<div class="main-content dashboard-wrapper">
+<div class="dashboard-wrapper" style="padding: 40px 5%;">
     <div class="dashboard-welcome">
         <h3>Butuh Bantuan?</h3>
         <h1>Hubungi Kami</h1>
