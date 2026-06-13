@@ -11,9 +11,34 @@ class ProdukController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    // public function index()
+    // {
+    //     $produks = Produk::where('user_id', Auth::id())->paginate(10);
+
+    //     return view('produk.index', compact('produks'));
+    // }
+
+    public function index(Request $request)
     {
-        $produks = Produk::where('user_id', Auth::id())->paginate(10);
+        // 1. Ambil data produk berdasarkan user yang login
+        $query = Produk::where('user_id', Auth::id());
+
+        // 2. Jika ada filter pencarian (Nama atau Kode Produk)
+        if ($request->filled('search')) {
+            $search = $request->search;
+            $query->where(function($q) use ($search) {
+                $q->where('nama_produk', 'like', '%' . $search . '%')
+                ->orWhere('kode_produk', 'like', '%' . $search . '%');
+            });
+        }
+
+        // 3. Jika ada filter Kategori
+        if ($request->filled('kategori')) {
+            $query->where('kategori', $request->kategori);
+        }
+
+        // 4. Urutkan berdasarkan kode produk dari A-Z (Ascending)
+        $produks = $query->orderBy('kode_produk', 'asc')->paginate(10)->withQueryString();
 
         return view('produk.index', compact('produks'));
     }
@@ -38,6 +63,7 @@ class ProdukController extends Controller
             'harga'       => 'required|numeric|min:0',
             'stok'        => 'required|integer|min:0',
             'gambar'      => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'deskripsi'   => 'nullable|string',
         ], [
             'kode_produk.required' => 'Kode produk wajib diisi ya.',
             'kode_produk.unique'   => 'Ups! Kode produk ini sudah terpakai.',
@@ -112,6 +138,7 @@ class ProdukController extends Controller
             'harga'       => 'required|numeric|min:0',
             'stok'        => 'required|integer|min:0',
             'gambar'      => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'deskripsi'   => 'nullable|string',
         ], [
             'kode_produk.required' => 'Kode produk wajib diisi ya.',
             'kode_produk.unique'   => 'Ups! Kode produk ini sudah dipakai oleh produk lain.',

@@ -34,13 +34,29 @@
                     </select>
                 </div>
 
-                <button type="submit" style="background-color: var(--primary-color); color: white; padding: 12px 25px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 1rem; transition: 0.3s; display: inline-block;">
+                <button type="submit" style="background-color: var(--primary-color); color: white; padding: 12px 25px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; font-family: inherit; font-size: 1rem; transition: 0.3s; display: inline-block;">
                     Simpan Preferensi
                 </button>
             </form>
         </div>
     </div>
 </div>
+
+<div id="successPreferensiModal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); z-index: 99999; justify-content: center; align-items: center; animation: fadeIn 0.3s forwards;">
+    <div style="background-color: var(--surface-color); padding: 40px; border-radius: 15px; text-align: center; max-width: 400px; width: 90%; box-shadow: 0 10px 30px rgba(0,0,0,0.3); border: 1px solid var(--primary-color); transform: translateY(20px); animation: slideUp 0.4s forwards ease-out;">
+
+        {{-- <div style="font-size: 4rem; margin-bottom: 10px;">✨</div> --}}
+        <h2 style="color: var(--primary-color); margin-bottom: 15px;">Berhasil!</h2>
+        <p style="color: var(--text-color); margin-bottom: 30px; font-size: 0.95rem;">Pengaturan preferensi tampilan Anda telah berhasil disimpan.</p>
+
+        <button type="button" onclick="document.getElementById('successPreferensiModal').style.display='none'" style="padding: 12px 35px; border-radius: 8px; background-color: var(--primary-color); color: white; border: none; font-family: inherit; font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">Oke, Mantap!</button>
+    </div>
+</div>
+
+<style>
+    @keyframes fadeIn { to { opacity: 1; } }
+    @keyframes slideUp { to { transform: translateY(0); } }
+</style>
 
 <script>
     document.getElementById('preferensi-form').addEventListener('submit', function(e) {
@@ -61,12 +77,17 @@
         .then(response => response.json())
         .then(data => {
             if(data.success) {
-                alert('Preferensi berhasil disimpan!');
+                // TAMPILKAN MODAL CAKEYS
+                document.getElementById('successPreferensiModal').style.display = 'flex';
 
                 if(theme === 'dark') {
                     document.documentElement.classList.add('dark');
+                    const themeIcon = document.getElementById('theme-icon'); // ID Ikon di Customer
+                    if (themeIcon) themeIcon.textContent = '☀️';
                 } else if (theme === 'light') {
                     document.documentElement.classList.remove('dark');
+                    const themeIcon = document.getElementById('theme-icon'); // ID Ikon di Customer
+                    if (themeIcon) themeIcon.textContent = '🌙';
                 }
 
                 document.documentElement.classList.remove('font-small', 'font-medium', 'font-large');

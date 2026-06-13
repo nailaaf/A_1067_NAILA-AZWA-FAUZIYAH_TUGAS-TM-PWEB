@@ -3,7 +3,7 @@
 @section('content')
 <div class="login-card">
     <div class="login-form-box">
-        <img src="{{ asset('images/opsi-logo-2.png') }}" alt="Logo Cakeys">
+        <img src="{{ asset('images/opsi-logo-2-baru.png') }}" alt="Logo Cakeys">
         <h3>Daftar Owner</h3>
 
         <form action="{{ route('register') }}" method="POST">

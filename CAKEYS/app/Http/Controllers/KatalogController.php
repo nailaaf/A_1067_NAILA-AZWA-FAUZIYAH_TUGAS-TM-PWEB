@@ -53,4 +53,10 @@ class KatalogController extends Controller
 
         return response()->json($produk);
     }
+
+    public function show($id)
+    {
+        $produk = \App\Models\Produk::findOrFail($id);
+        return view('katalog.show', compact('produk'));
+    }
 }

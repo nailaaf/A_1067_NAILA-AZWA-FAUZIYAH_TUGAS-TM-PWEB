@@ -11,7 +11,8 @@
 
     <div class="dashboard-section mt-4" style="background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
 
-        <div style="display: grid; grid-template-columns: 350px 1fr; gap: 40px; align-items: start;">
+        {{-- <div style="display: grid; grid-template-columns: 350px 1fr; gap: 40px; align-items: start;"> --}}
+        <div id="detail-grid-wrapper" style="display: grid; grid-template-columns: 350px 1fr; gap: 40px; align-items: start;">
 
             <div style="width: 100%; height: 350px; border-radius: 12px; overflow: hidden; background-color: #f9f9f9; display: flex; justify-content: center; align-items: center; border: 1px solid #ddd;">
                 @if($produk->gambar)
@@ -51,9 +52,19 @@
                             @endif
                         </td>
                     </tr>
+                    <tr>
+                        <td style="padding: 15px 0; color: var(--text-color); font-weight: 600; width: 150px; vertical-align: top;">Deskripsi</td>
+                        <td style="padding: 15px 0; color: var(--secondary-color); vertical-align: top;">
+                            <span style="margin-right: 15px;">:</span>
+                            <span style="display: inline-block; max-width: 400px; line-height: 1.6;">
+                                {{ $produk->deskripsi ?: 'Belum ada deskripsi untuk produk ini.' }}
+                            </span>
+                        </td>
+                    </tr>
                 </table>
 
-                <div style="margin-top: 40px; display: flex; gap: 15px;">
+                {{-- <div style="margin-top: 40px; display: flex; gap: 15px;"> --}}
+                <div id="detail-action-buttons" style="margin-top: 40px; display: flex; gap: 15px;">
                     <a href="{{ route('produk.index') }}" style="background-color: #6c757d; color: white; padding: 12px 25px; border-radius: 6px; text-decoration: none; font-weight: bold;">⬅ Kembali ke Katalog</a>
                     <a href="{{ route('produk.edit', $produk->id) }}" style="background-color: #ffc107; color: #333; padding: 12px 25px; border-radius: 6px; text-decoration: none; font-weight: bold;">Edit Produk</a>
                 </div>
@@ -62,4 +73,43 @@
         </div>
     </div>
 </div>
+<style>
+    /* ================= RESPONSIVE DETAIL PRODUK ================= */
+    @media (max-width: 850px) {
+        /* 1. Paksa gambar dan detail teks berbaris atas-bawah */
+        #detail-grid-wrapper {
+            grid-template-columns: 1fr !important;
+            gap: 20px !important;
+        }
+
+        /* 2. Sesuaikan ukuran judul di HP agar tidak kebesaran */
+        #detail-grid-wrapper h2 {
+            font-size: 1.6rem !important;
+        }
+
+        /* 3. Rapikan tabel keterangan */
+        #detail-grid-wrapper table td {
+            font-size: 0.95rem; /* Kecilkan sedikit fontnya */
+        }
+        #detail-grid-wrapper table td:first-child {
+            width: 120px !important; /* Kecilkan jarak kolom pertama agar titik dua (:) tidak menjauh */
+        }
+
+        /* 4. Bebaskan teks deskripsi dari batasan max-width 400px agar mengisi penuh layar */
+        #detail-grid-wrapper table span[style*="max-width"] {
+            max-width: 100% !important;
+            display: inline !important;
+        }
+
+        /* 5. Susun tombol Kembali dan Edit menjadi atas-bawah */
+        #detail-action-buttons {
+            flex-direction: column;
+            gap: 10px !important;
+        }
+        #detail-action-buttons a {
+            width: 100%;
+            text-align: center;
+        }
+    }
+</style>
 @endsection

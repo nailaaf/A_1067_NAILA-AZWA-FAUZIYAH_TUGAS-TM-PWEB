@@ -90,6 +90,32 @@
         .btn-login { width: 100%; background-color: #5A3E36; color: white; padding: 12px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 1rem; }
         .auth-link { margin-top: 20px; font-size: 0.85rem; color: #8C6A5D; }
         .auth-link a { color: #5A3E36; font-weight: bold; text-decoration: none; }
+
+        /* ================= RESPONSIVE UNTUK HP ================= */
+        @media (max-width: 850px) {
+            main {
+                grid-template-columns: 1fr; /* Mengubah 2 kolom menjadi 1 baris (atas-bawah) */
+                padding: 40px 20px; /* Menghapus jarak 100px yang bikin layar HP terjepit */
+                gap: 30px; /* Memberi jarak nafas antara teks dan kotak form */
+                text-align: center; /* Mengetengahkan teks agar lebih manis dilihat di HP */
+            }
+
+            .login-branding h1 {
+                font-size: 2.8rem; /* Mengecilkan ukuran CAKEYS agar tidak menabrak layar */
+            }
+
+            .login-branding h2 {
+                font-size: 1.2rem;
+            }
+
+            .login-branding p {
+                font-size: 0.95rem;
+            }
+
+            .login-card {
+                max-width: 100%; /* Mengizinkan kotak login mengisi lebar layar HP */
+            }
+        }
     </style>
 </head>
 <body>

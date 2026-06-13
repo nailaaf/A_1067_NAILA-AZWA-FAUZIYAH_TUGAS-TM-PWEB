@@ -44,6 +44,10 @@ class ProfileController extends Controller
     {
         $request->validateWithBag('userDeletion', [
             'password' => ['required', 'current_password'],
+        ], [
+            // Tambahan pesan error kustom bahasa Indonesia
+            'password.required'         => 'Tolong masukkan password Anda untuk konfirmasi.',
+            'password.current_password' => 'Password yang Anda masukkan salah, penghapusan dibatalkan.'
         ]);
 
         $user = $request->user();

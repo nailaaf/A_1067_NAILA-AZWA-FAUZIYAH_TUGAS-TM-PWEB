@@ -13,11 +13,32 @@ class PasswordController extends Controller
     /**
      * Update the user's password.
      */
+    // public function update(Request $request): RedirectResponse
+    // {
+    //     $validated = $request->validateWithBag('updatePassword', [
+    //         'current_password' => ['required', 'current_password'],
+    //         'password' => ['required', Password::defaults(), 'confirmed'],
+    //     ]);
+
+    //     $request->user()->update([
+    //         'password' => Hash::make($validated['password']),
+    //     ]);
+
+    //     return back()->with('status', 'password-updated');
+    // }
+
     public function update(Request $request): RedirectResponse
     {
         $validated = $request->validateWithBag('updatePassword', [
             'current_password' => ['required', 'current_password'],
-            'password' => ['required', Password::defaults(), 'confirmed'],
+            'password' => ['required', \Illuminate\Validation\Rules\Password::defaults(), 'confirmed'],
+        ], [
+            // Tambahan pesan error kustom bahasa Indonesia
+            'current_password.required'         => 'Password saat ini wajib diisi.',
+            'current_password.current_password' => 'Password lama yang Anda masukkan salah.',
+            'password.required'                 => 'Password baru tidak boleh kosong.',
+            'password.min'                      => 'Password baru minimal harus 8 karakter.',
+            'password.confirmed'                => 'Konfirmasi password baru tidak cocok.'
         ]);
 
         $request->user()->update([

@@ -11,8 +11,10 @@
     </div>
 
     <div class="dashboard-section" style="padding: 40px 50px;">
-        <div style="text-align: center; margin-bottom: 40px;">
-            <img src="{{ asset('images/opsi-logo-2.png') }}" alt="Logo Cakeys" style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%; margin-bottom: 15px; border: 4px solid #EFE8DF; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+        <div style="text-align: center; margin-bottom: 40px; display: flex; flex-direction: column; align-items: center;">
+            <div style="width: 200px; height: 200px; background-color: var(--surface-color); border-radius: 50%; border: 4px solid #EFE8DF; box-shadow: 0 4px 15px rgba(0,0,0,0.05); display: flex; justify-content: center; align-items: center; margin-bottom: 15px;">
+                <img src="{{ asset('images/opsi-logo-2-baru.png') }}" alt="Logo Cakeys" style="width: 75%; height: auto; object-fit: contain; display: block;">
+            </div>
             <h2 style="font-size: 2.2rem; color: var(--primary-color); margin-bottom: 5px;">Cakeys</h2>
             <p style="color: var(--accent-color); font-weight: 600; font-size: 1.2rem;">Create Your Own Cake</p>
         </div>
@@ -28,7 +30,7 @@
                 Berlokasi di Bondowoso, Jawa Timur, kami selalu menggunakan bahan-bahan premium pilihan untuk memastikan setiap gigitan tidak hanya terlihat indah secara visual, tetapi juga memanjakan lidah.
             </p>
             <p style="text-align: center; font-weight: bold; margin-top: 40px; color: var(--secondary-color);">
-                Terima kasih telah mempercayakan momen manismu bersama Cakeys! 🎂✨
+                Terima kasih telah mempercayakan momen manismu bersama Cakeys!
             </p>
         </div>
     </div>

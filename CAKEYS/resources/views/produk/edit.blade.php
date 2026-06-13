@@ -14,7 +14,8 @@
             @csrf
             @method('PUT')
 
-            <div style="display: grid; grid-template-columns: 250px 1fr; gap: 30px;">
+            {{-- <div style="display: grid; grid-template-columns: 250px 1fr; gap: 30px;"> --}}
+            <div id="form-grid-wrapper" style="display: grid; grid-template-columns: 250px 1fr; gap: 30px;">
 
                 <div style="text-align: center;">
                     <label style="display: block; margin-bottom: 10px; font-weight: 600;">Foto Produk</label>
@@ -34,7 +35,8 @@
                     @error('gambar') <span style="color: red; font-size: 0.8em;">{{ $message }}</span> @enderror
                 </div>
 
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-content: start;">
+                {{-- <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-content: start;"> --}}
+                <div id="form-input-wrapper" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-content: start;">
                     <div>
                         <label style="display: block; margin-bottom: 5px; font-weight: 600;">Kode Produk</label>
                         <input type="text" name="kode_produk" value="{{ old('kode_produk', $produk->kode_produk) }}" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
@@ -45,6 +47,12 @@
                         <label style="display: block; margin-bottom: 5px; font-weight: 600;">Nama Produk</label>
                         <input type="text" name="nama_produk" value="{{ old('nama_produk', $produk->nama_produk) }}" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px;">
                         @error('nama_produk') <span style="color: red; font-size: 0.8em;">{{ $message }}</span> @enderror
+                    </div>
+
+                    <div style="grid-column: span 2;">
+                        <label style="display: block; margin-bottom: 5px; font-weight: 600;">Deskripsi Produk</label>
+                        <textarea name="deskripsi" value="{{ old('deskripsi', $produk->deskripsi) }}" rows="3" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px; font-family: inherit;" placeholder="Masukkan deskripsi kue secara menarik...">{{ old('deskripsi') }}</textarea>
+                        @error('deskripsi') <span style="color: red; font-size: 0.8em;">{{ $message }}</span> @enderror
                     </div>
 
                     <div>
@@ -73,8 +81,8 @@
             </div>
 
             <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee; display: flex; justify-content: flex-end; gap: 10px;">
-                <a href="{{ route('produk.index') }}" style="background-color: #6c757d; color: white; padding: 10px 25px; border-radius: 6px; text-decoration: none; font-weight: bold;">Batal</a>
-                <button type="submit" style="background-color: #ffc107; color: #333; padding: 10px 25px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer;">Simpan Perubahan</button>
+                <a href="{{ route('produk.index') }}" style="background-color: #6c757d; color: white; padding: 10px 25px; border-radius: 6px; text-decoration: none; font-weight: bold; font-family: inherit; font-size: 1rem;">Batal</a>
+                <button type="submit" style="background-color: #ffc107; color: #333; padding: 10px 25px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; font-family: inherit; font-size: 1rem;">Simpan Perubahan</button>
             </div>
         </form>
     </div>
@@ -94,4 +102,34 @@
         reader.readAsDataURL(event.target.files[0]);
     }
 </script>
+
+<style>
+    /* ================= RESPONSIVE EDIT PRODUK ================= */
+    @media (max-width: 850px) {
+        /* 1. Paksa kolom Foto dan Inputan berbaris atas-bawah */
+        #form-grid-wrapper {
+            grid-template-columns: 1fr !important;
+        }
+
+        /* 2. Paksa setiap kotak inputan turun menjadi 1 kolom (tidak menyamping 1fr 1fr) */
+        #form-input-wrapper {
+            grid-template-columns: 1fr !important;
+        }
+
+        /* 3. Rapikan textarea yang punya "grid-column: span 2" agar tidak error di 1 kolom */
+        #form-input-wrapper > div {
+            grid-column: span 1 !important;
+        }
+
+        /* 4. Ketengahkan tombol Batal & Simpan Perubahan */
+        form > div:last-child {
+            flex-direction: column;
+            gap: 15px;
+        }
+        form > div:last-child a, form > div:last-child button {
+            width: 100%;
+            text-align: center;
+        }
+    }
+</style>
 @endsection

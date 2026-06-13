@@ -3,7 +3,7 @@
 @section('title', 'Katalog - Cakeys')
 
 @section('content')
-<div class="dashboard-wrapper" style="padding: 40px 5%;">
+{{-- <div class="dashboard-wrapper" style="padding: 40px 5%;">
     <div class="dashboard-welcome">
         <h3>Pilih Kue Favoritmu</h3>
         <h1>Katalog Cakeys</h1>
@@ -46,6 +46,64 @@
                     <button style="width: 100%; padding: 10px; background-color: var(--primary-color); color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; transition: 0.3s;" onmouseover="this.style.backgroundColor='var(--secondary-color)'" onmouseout="this.style.backgroundColor='var(--primary-color)'">
                         Tambah ke Keranjang
                     </button>
+                </div>
+            </div>
+        </div>
+        @endforeach
+    </div>
+</div> --}}
+
+<div class="dashboard-wrapper" style="padding: 40px 5%;">
+    <div class="dashboard-welcome">
+        <h3>Pilih Kue Favoritmu</h3>
+        <h1>Katalog Cakeys</h1>
+    </div>
+
+    <div class="top-bar">
+        <input type="text" id="search" placeholder="Cari nama produk...">
+
+        <div class="katalog-filter">
+            <ul class="filter-list">
+                <li class="active">Semua Kategori</li>
+                @foreach($kategori as $k)
+                    <li style="text-transform: capitalize;">{{ ucfirst($k) }}</li>
+                @endforeach
+            </ul>
+        </div>
+    </div>
+
+    <div class="produk-grid" id="product-grid">
+        @foreach ($produk as $p)
+        <div class="produk-card">
+            <div class="card-image">
+                <img src="{{ asset($p->gambar) }}" alt="{{ $p->nama_produk }}" onclick="window.location.href='{{ route('katalog.show', $p->id) }}'" style="cursor: pointer;">
+                <span class="badge-kategori">{{ ucfirst($p->kategori) }}</span>
+            </div>
+
+            <div class="card-details">
+                <h3 class="kue-nama" style="margin-top: 10px; cursor: pointer;" onclick="window.location.href='{{ route('katalog.show', $p->id) }}'">{{ $p->nama_produk }}</h3>
+                <p class="kue-harga">Rp {{ number_format($p->harga, 0, ',', '.') }}</p>
+
+                <div class="kue-stok">
+                    @if($p->stok <= 5)
+                        <span class="stok-warning">Sisa Stok: {{ $p->stok }}</span>
+                    @else
+                        <span class="stok-aman">Stok Tersedia</span>
+                    @endif
+                </div>
+
+                <div class="card-actions" style="margin-top: 15px;">
+                    <form action="{{ route('keranjang.tambah') }}" method="POST" style="width: 100%; margin: 0;">
+                        @csrf
+                        <input type="hidden" name="produk_id" value="{{ $p->id }}">
+                        <input type="hidden" name="jumlah" value="1">
+                        <input type="hidden" name="addon" value="0">
+                        <input type="hidden" name="catatan" value="-">
+
+                        <button type="submit" style="width: 100%; padding: 10px; background-color: var(--primary-color); color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; transition: 0.3s;" onmouseover="this.style.backgroundColor='var(--secondary-color)'" onmouseout="this.style.backgroundColor='var(--primary-color)'">
+                            Tambah ke Keranjang
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -101,6 +159,17 @@
         const originalHTML = productGrid.innerHTML;
         let searchTimeout;
         let fetchController;
+
+        // --- TAMBAHAN BARU: Menangkap kata kunci dari Global Search Navbar ---
+        const urlParams = new URLSearchParams(window.location.search);
+        if(urlParams.has('search')) {
+            searchInput.value = urlParams.get('search'); // Isi otomatis ke input
+            setTimeout(loadProducts, 100); // Langsung filter otomatis
+
+            // Hapus "?search=" dari URL agar terlihat bersih setelah difilter (Opsional)
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }
+        // ---------------------------------------------------------------------
 
         function loadProducts() {
             const keyword = searchInput.value.trim();
@@ -162,9 +231,17 @@
                                         <p class="kue-harga">Rp ${hargaFormatted}</p>
                                         <div class="kue-stok">${stokMessage}</div>
                                         <div class="card-actions" style="margin-top: 15px;">
-                                            <button style="width: 100%; padding: 10px; background-color: var(--primary-color); color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; transition: 0.3s;" onmouseover="this.style.backgroundColor='var(--secondary-color)'" onmouseout="this.style.backgroundColor='var(--primary-color)'">
-                                                Tambah ke Keranjang 🛒
-                                            </button>
+                                            <form action="/keranjang/tambah" method="POST" style="width: 100%; margin: 0;">
+                                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                                <input type="hidden" name="produk_id" value="${p.id}">
+                                                <input type="hidden" name="jumlah" value="1">
+                                                <input type="hidden" name="addon" value="0">
+                                                <input type="hidden" name="catatan" value="-">
+
+                                                <button type="submit" style="width: 100%; padding: 10px; background-color: var(--primary-color); color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; transition: 0.3s;" onmouseover="this.style.backgroundColor='var(--secondary-color)'" onmouseout="this.style.backgroundColor='var(--primary-color)'">
+                                                    Tambah ke Keranjang
+                                                </button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
