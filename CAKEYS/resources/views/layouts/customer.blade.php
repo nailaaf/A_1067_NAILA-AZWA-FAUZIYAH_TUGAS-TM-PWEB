@@ -38,7 +38,6 @@
             </div>
         </div>
 
-        <!-- ================= MENU LACI (OFF-CANVAS) ================= -->
         <div class="nav-overlay" id="navOverlay">
             <div class="menu-header-mobile">
                 <h2>Menu</h2>
@@ -46,7 +45,6 @@
             </div>
             <ul class="nav-menu">
 
-                <!-- LOGIN / PROFIL PINDAH KE SINI DI VERSI HP -->
                 <li class="mobile-only-menu" style="border-bottom: 1px solid var(--border-color); padding-bottom: 15px; margin-bottom: 15px;">
                     @guest
                         <a href="{{ route('login') }}" style="background-color: var(--primary-color); color: white; text-align: center; border-radius: 8px; padding: 10px; font-weight: bold; display: block;">Masuk / Login</a>
@@ -80,8 +78,6 @@
                 @endguest
             </ul>
         </div>
-        <!-- ========================================================== -->
-
         <div class="nav-icon">
             <button type="button" id="themeToggle" style="background: none; border: none; cursor: pointer; font-size: 1.2rem; color: white;">
                 <span id="theme-icon">🌙</span>
@@ -100,10 +96,8 @@
                     </div>
                 </a>
 
-                <!-- Tombol Login hanya muncul di Layar Besar (Desktop) -->
                 <a href="{{ route('login') }}" class="btn-login-nav" style="background-color: #E8C39E; color: #3E2415; padding: 6px 20px; border-radius: 20px; text-decoration: none; font-weight: 700; font-size: 0.9rem; transition: 0.3s; margin-left: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.15);">Login</a>
             @else
-                <!-- Profil hanya muncul di Layar Besar (Desktop) -->
                 <div class="profile-container" id="profileContainer" style="display: flex; align-items: center; gap: 12px;">
                     <span class="nama-user-desktop" style="color: white; font-weight: 600; font-size: 1rem; cursor: default;">
                         Halo, {{ Auth::user()->name }}!
@@ -261,7 +255,6 @@
             <button onclick="closeGlobalSearch()" style="position: absolute; right: 0; top: -50px; background: none; border: none; color: white; font-size: 2.5rem; cursor: pointer; transition: 0.3s;" onmouseover="this.style.color='var(--primary-color)'" onmouseout="this.style.color='white'">&times;</button>
 
             <form id="globalSearchForm" onsubmit="submitGlobalSearch(event)" style="display: flex; width: 100%; background: var(--surface-color); border-radius: 50px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.5); border: 2px solid var(--primary-color);">
-                {{-- <span style="padding: 20px 25px; font-size: 1.5rem; display: flex; align-items: center;">🔍</span> --}}
                 <span style="padding: 20px 25px; font-size: 1.5rem; display: flex; align-items: center;">
                     <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 48 48">
                         <path d="M0 0h48v48H0z" fill="none" />
@@ -281,12 +274,6 @@
             </form>
         </div>
     </div>
-
-    <style>
-        @keyframes fadeIn { to { opacity: 1; } }
-        @keyframes slideUp { to { transform: translateY(0); } }
-        @keyframes slideDown { from { transform: translateY(-30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-    </style>
 
     <script>
         function openGlobalSearch() {
@@ -340,5 +327,83 @@
             if(closeMenuBtn) closeMenuBtn.addEventListener('click', toggleMenu);
         });
     </script>
+
+    <div class="whatsapp-container">
+        <div class="whatsapp-tooltip">Butuh info lebih lanjut? Chat Kami</div>
+
+        <a href="https://wa.me/6281615112608" target="_blank" class="whatsapp-float" aria-label="Chat via WhatsApp">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="whatsapp-icon">
+                <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+            </svg>
+        </a>
+    </div>
+
+    <style>
+        @keyframes fadeIn { to { opacity: 1; } }
+        @keyframes slideUp { to { transform: translateY(0); } }
+        @keyframes slideDown { from { transform: translateY(-30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+        /* ================= CSS FLOATING WHATSAPP BUTTON ================= */
+        .whatsapp-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .whatsapp-tooltip {
+            background-color: var(--surface-color, white);
+            color: var(--text-color, #333);
+            padding: 8px 18px;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            font-size: 0.9rem;
+            font-weight: 600;
+            opacity: 0;
+            transform: translateX(20px);
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            pointer-events: none;
+            border: 1px solid var(--border-color, #eee);
+        }
+
+        .whatsapp-container:hover .whatsapp-tooltip {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .whatsapp-float {
+            width: 60px;
+            height: 60px;
+            background-color: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background-color: #20b858;
+        }
+
+        .whatsapp-icon {
+            width: 35px;
+            height: 35px;
+            fill: white;
+        }
+
+        @media (max-width: 768px) {
+            .whatsapp-tooltip { display: none; }
+            .whatsapp-container { bottom: 20px; right: 20px; }
+            .whatsapp-float { width: 55px; height: 55px; }
+            .whatsapp-icon { width: 30px; height: 30px; }
+        }
+    </style>
 </body>
 </html>

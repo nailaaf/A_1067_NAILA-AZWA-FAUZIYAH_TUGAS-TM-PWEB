@@ -87,4 +87,26 @@ class PesananController extends Controller
 
         return view('cek-pesanan', compact('pesanan'));
     }
+
+    // Fungsi baru khusus untuk AJAX
+    public function cariResiAjax(Request $request)
+    {
+        // Cari pesanan beserta relasi detail dan produknya
+        $pesanan = \App\Models\Pesanan::with('detail_pesanan.produk')
+                        ->where('no_pesanan', $request->resi)
+                        ->first();
+
+        // Kembalikan dalam format JSON (Syarat Wajib Rubrik)
+        if ($pesanan) {
+            return response()->json([
+                'status' => 'success',
+                'data' => $pesanan
+            ]);
+        } else {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Pesanan tidak ditemukan'
+            ]);
+        }
+    }
 }

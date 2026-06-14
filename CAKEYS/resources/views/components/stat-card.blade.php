@@ -26,12 +26,17 @@
 <a href="{{ $link }}" style="text-decoration: none; color: inherit; display: block; height: 100%; transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
 
     <div class="card" style="height: 100%; box-sizing: border-box;">
-        <h3>
+
+        <h3 style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 10px;">
             @if($ikon)
-                <span style="margin-right: 5px;">{!! $ikon !!}</span>
+                <span style="display: flex; align-items: center; justify-content: center;">
+                    {!! $ikon !!}
+                </span>
             @endif
-            {{ $judul }}
+
+            <span style="margin: 0; line-height: 1;">{{ $judul }}</span>
         </h3>
+
         <p class="angka" style="color: {{ $warna }};">{{ $nilai }}</p>
     </div>
 

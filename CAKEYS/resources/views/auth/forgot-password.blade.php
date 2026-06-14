@@ -7,7 +7,7 @@
         <h3 style="margin-bottom: 10px;">Lupa Kata Sandi?</h3>
 
         <p style="font-size: 0.85rem; color: #666; margin-bottom: 25px; line-height: 1.5; text-align: center;">
-            Jangan khawatir! Masukkan email yang terdaftar, dan kami akan mengirimkan tautan untuk mereset kata sandi Anda.
+            Masukkan email yang terdaftar untuk mengirimkan tautan reset kata sandi Anda.
         </p>
 
         @if (session('status'))

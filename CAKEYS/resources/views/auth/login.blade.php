@@ -6,7 +6,7 @@
         <img src="{{ asset('images/opsi-logo-2-baru.png') }}" alt="Logo Cakeys">
         <h3>Ayo Masuk</h3>
 
-        <form action="{{ route('login') }}" method="POST">
+        {{-- <form action="{{ route('login') }}" method="POST">
             @csrf
             <div class="input-group">
                 <label>Email</label>
@@ -29,6 +29,58 @@
 
             <!-- TAMBAHAN: Link Lupa Password -->
             <div style="text-align: right; margin-bottom: 20px;">
+                <a href="{{ route('password.request') }}" style="color: #5A3E36; font-size: 0.85rem; text-decoration: none; font-weight: 600; transition: 0.2s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">
+                    Lupa Kata Sandi?
+                </a>
+            </div>
+
+            <button type="submit" class="btn-login">Login</button>
+
+            <p class="auth-link">
+                Belum punya akun? <a href="{{ route('register') }}">Daftar di sini</a>
+            </p>
+        </form> --}}
+        <form action="{{ route('login') }}" method="POST">
+            @csrf
+            <div class="input-group">
+                <label>Email</label>
+                <input type="email" name="email" value="{{ old('email') }}" placeholder="Masukkan email anda" autofocus>
+            </div>
+
+            <div class="input-group" style="margin-bottom: 8px;">
+                <label>Kata Sandi</label>
+                <div style="position: relative;">
+                    <input type="password" name="password" id="password" placeholder="Masukkan kata sandi anda" style="width: 100%; padding-right: 40px; box-sizing: border-box;">
+
+                    <span id="togglePassword" style="position: absolute; right: 12px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #888; display: flex; align-items: center; transition: 0.3s;">
+                        <svg id="eye-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </span>
+                </div>
+            </div>
+
+            @if($errors->any())
+                @php
+                    // Menggabungkan semua pesan error asli dari Laravel menjadi huruf kecil
+                    $semuaError = strtolower(implode(' ', $errors->all()));
+
+                    // Jika pesan error aslinya mengandung kata 'required' (Inggris) atau 'wajib' (Indonesia)
+                    if(str_contains($semuaError, 'required') || str_contains($semuaError, 'wajib')) {
+                        $pesanError = 'Harap isi semua data';
+                    } else {
+                        // Jika tidak ada kata wajib/required, berarti datanya diisi tapi salah
+                        $pesanError = 'Email atau password salah';
+                    }
+                @endphp
+
+                <div style="text-align: center; color: #DC3545; font-size: 0.85rem; margin-top: 15px; margin-bottom: 5px; font-weight: 600;">
+                    {{ $pesanError }}
+                </div>
+            @endif
+
+            <div style="text-align: right; margin-top: 10px; margin-bottom: 20px;">
                 <a href="{{ route('password.request') }}" style="color: #5A3E36; font-size: 0.85rem; text-decoration: none; font-weight: 600; transition: 0.2s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'">
                     Lupa Kata Sandi?
                 </a>

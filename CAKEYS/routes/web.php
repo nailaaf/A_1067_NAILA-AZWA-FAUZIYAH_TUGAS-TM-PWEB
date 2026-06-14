@@ -45,6 +45,7 @@ Route::get('/katalog/search', [KatalogController::class, 'search'])->name('katal
 Route::get('/katalog/{id}', [App\Http\Controllers\KatalogController::class, 'show'])->name('katalog.show');
 
 Route::get('/cek-pesanan', [PesananController::class, 'lacak'])->name('cek-pesanan');
+Route::get('/api/cek-pesanan', [PesananController::class, 'cariResiAjax'])->name('api.cek-pesanan');
 
 
 Route::middleware(['auth', 'cekowner'])->group(function () {
